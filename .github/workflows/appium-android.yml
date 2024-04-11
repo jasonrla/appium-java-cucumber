@@ -25,6 +25,7 @@ jobs:
           node-version: '20'
       - run: |
           npm install -g appium@v2.0.1
+          npm install -g appium-uiautomator2-driver
           appium -v
           appium &>/dev/null &
       - name: Enable KVM
