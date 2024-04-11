@@ -11,30 +11,17 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: 11
-          distribution: 'adopt'
-
-      - uses: actions/setup-node@v2
-        with:
-            node-version: '20'
-
-      - run: |
-          npm install -g appium@v2.0.1
-          npm install -g appium-uiautomator2-driver
+      - name: Setup appium
+        run: |
+          npm install -g appium@v1.22
           appium -v
           appium &>/dev/null &
 
-      - name: Set up emulator
+      - name: Run appium android tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
-          arch: x86
-          profile: Nexus 5
-          emulator-boot-timeout: 360
+          api-level: 29
           script: mvn clean test -Pandroid
   
