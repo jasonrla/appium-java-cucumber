@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 1.8
+          distribution: 'adopt'
       - uses: actions/setup-node@v2
         with:
           node-version: '20'
