@@ -35,4 +35,5 @@ jobs:
           arch: x86_64
           profile: Nexus-5
           script: mvn clean test -Pandroid
+          sdk-version: '29.0.3'
 
