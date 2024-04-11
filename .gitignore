@@ -1,0 +1,42 @@
+# Ignorar los archivos y directorios de IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Ignorar los archivos y directorios de compilación de Java
+target/
+*.class
+
+# Ignorar los archivos de registro
+*.log
+
+# Ignorar los archivos temporales del sistema
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.DS_Store
+
+# Ignorar los archivos de paquetes
+*.jar
+*.war
+*.ear
+*.tar.gz
+*.rar
+
+# Ignorar los archivos de configuración de Maven
+release.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+# Ignorar los archivos de configuración de Gradle
+.gradle/
+build/
+
+# Ignorar los archivos de configuración de Eclipse
+.settings/
+.project
+.classpath
