@@ -14,7 +14,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [25]  
+        api-level: [30]
         target: [default]
     steps:
     - uses: actions/checkout@v2
@@ -24,9 +24,9 @@ jobs:
         java-version: 1.8
     - uses: actions/setup-node@v2
       with:
-       node-version: '12'
+       node-version: '20'
     - run: |
-            npm install -g appium@v1.20.2
+            npm install -g appium@v2.0.1
             appium -v
             appium &>/dev/null &
     - name: Run Appium Tests
