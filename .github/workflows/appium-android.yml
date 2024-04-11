@@ -24,7 +24,7 @@ jobs:
         java-version: 1.8
     - uses: actions/setup-node@v2
       with:
-       node-version: 'v20.12.2'
+       node-version: '14'
     - run: |
             npm install -g appium@v2.0.1
             appium -v
@@ -34,6 +34,6 @@ jobs:
       with:
         api-level: ${{ matrix.api-level }}
         target: ${{ matrix.target }}
-        arch: x86_64
+        arch: arm64-v8a
         profile: Pixel 6 Pro API 34
         script: mvn clean test -Pandroid
