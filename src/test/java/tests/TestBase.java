@@ -20,12 +20,12 @@ public class TestBase extends AbstractTestNGCucumberTests {
     public static void Android_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "10"); //version del android
+        capabilities.setCapability("platformVersion", "14"); //10 en CI
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/ToDo.apk");
-        driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
+        driver = new AndroidDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
     public void iOS_setUp() throws MalformedURLException {
