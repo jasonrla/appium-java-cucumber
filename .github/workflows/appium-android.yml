@@ -35,7 +35,7 @@ jobs:
           api-level: 30
           arch: x86
           profile: Nexus 5
-          timeout-sec: 360
+          emulator-boot-timeout: 360
 
       - name: Start emulator
         run: adb devices && emulator -avd emulator-5554 -no-audio -no-window &
