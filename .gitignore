@@ -2,6 +2,7 @@
 .idea/
 *.iml
 *.iws
+*.xml
 
 # Ignorar los archivos y directorios de compilación de Java
 target/
