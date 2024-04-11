@@ -36,11 +36,5 @@ jobs:
           arch: x86
           profile: Nexus 5
           emulator-boot-timeout: 360
-
-      - name: Start emulator
-        run: adb devices && emulator -avd emulator-5554 -no-audio -no-window &
-
-      - name: Build and test
-        run: |
-            script: mvn clean test -Pandroid
+          script: mvn clean test -Pandroid
   
