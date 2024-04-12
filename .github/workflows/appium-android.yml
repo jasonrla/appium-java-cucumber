@@ -11,14 +11,14 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [ 29 ]
+        api-level: [ 28 ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup appium
         run: |
-          npm install -g appium@v2.4.1
+          npm install -g appium@v2.0.1
           appium driver install uiautomator2
           npm install -g appium-doctor
           appium -v
