@@ -1,4 +1,46 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.87 s - in TestSuite
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 4.592 s <<< FAILURE! - in TestSuite
+tests.ToDo_Android.test_add_task[Finish Appium Course, Need to finish my course ASAP](1)  Time elapsed: 0.946 s  <<< FAILURE!
+org.openqa.selenium.SessionNotCreatedException: 
+Unable to create a new remote session. Please check the server log for more details. Original error: The requested resource could not be found, or a request was received using an HTTP method that is not supported by the mapped resource (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 125 milliseconds
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'Jasons-MacBook-Pro.local', ip: 'fe80:0:0:0:c11:7616:e437:7ea5%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '1.8.0_202'
+Driver info: driver.version: AndroidDriver
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'Jasons-MacBook-Pro.local', ip: 'fe80:0:0:0:c11:7616:e437:7ea5%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '1.8.0_202'
+Driver info: driver.version: AndroidDriver
+	at tests.ToDo_Android.test_add_task(ToDo_Android.java:27)
+Caused by: java.lang.reflect.InvocationTargetException
+	at tests.ToDo_Android.test_add_task(ToDo_Android.java:27)
+Caused by: org.openqa.selenium.UnsupportedCommandException: 
+The requested resource could not be found, or a request was received using an HTTP method that is not supported by the mapped resource (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 125 milliseconds
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'Jasons-MacBook-Pro.local', ip: 'fe80:0:0:0:c11:7616:e437:7ea5%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '1.8.0_202'
+Driver info: driver.version: AndroidDriver
+	at tests.ToDo_Android.test_add_task(ToDo_Android.java:27)
+
+tests.ToDo_Android.test_add_task[Start Learning Espresso, Need check the new course](2)  Time elapsed: 0.044 s  <<< FAILURE!
+org.openqa.selenium.SessionNotCreatedException: 
+Unable to create a new remote session. Please check the server log for more details. Original error: The requested resource could not be found, or a request was received using an HTTP method that is not supported by the mapped resource (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 11 milliseconds
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'Jasons-MacBook-Pro.local', ip: 'fe80:0:0:0:c11:7616:e437:7ea5%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '1.8.0_202'
+Driver info: driver.version: AndroidDriver
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'Jasons-MacBook-Pro.local', ip: 'fe80:0:0:0:c11:7616:e437:7ea5%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '1.8.0_202'
+Driver info: driver.version: AndroidDriver
+	at tests.ToDo_Android.test_add_task(ToDo_Android.java:27)
+Caused by: java.lang.reflect.InvocationTargetException
+	at tests.ToDo_Android.test_add_task(ToDo_Android.java:27)
+Caused by: org.openqa.selenium.UnsupportedCommandException: 
+The requested resource could not be found, or a request was received using an HTTP method that is not supported by the mapped resource (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 11 milliseconds
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'Jasons-MacBook-Pro.local', ip: 'fe80:0:0:0:c11:7616:e437:7ea5%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '1.8.0_202'
+Driver info: driver.version: AndroidDriver
+	at tests.ToDo_Android.test_add_task(ToDo_Android.java:27)
+

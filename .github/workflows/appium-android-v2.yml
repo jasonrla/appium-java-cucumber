@@ -15,13 +15,13 @@ jobs:
 
       - name: Setup appium
         run: |
-          npm install -g appium@v1.22
+          npm install -g appium@2.0.1
           appium -v
           appium &>/dev/null &
 
       - name: Run appium android tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29 #29
+          api-level: 34 #29
           script: mvn clean test -Pandroid
   
