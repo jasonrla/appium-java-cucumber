@@ -11,8 +11,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [ 29, 30 ]
-        target: [ default ]
+        api-level: [ 29 ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -26,7 +25,6 @@ jobs:
       - name: Run appium android tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }} #29
+          api-level: ${{ matrix.api-level }} #29
           script: mvn clean test -Pandroid
   
