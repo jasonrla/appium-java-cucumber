@@ -16,11 +16,8 @@ public class TestBase extends AbstractTestNGCucumberTests {
     public static void Android_setUp() throws MalformedURLException {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        //capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        //capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator");
-
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "10"); //10 en CI
+        capabilities.setCapability("platformVersion", "9"); //10 en CI
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("app",
