@@ -11,14 +11,14 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [ 32 ]
+        api-level: [ 31 ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup appium
         run: |
-          npm install -g appium@v2.0.1
+          npm install -g appium@v2.4.1
           appium driver install uiautomator2          
           npm install -g appium-doctor
           appium -v
@@ -31,4 +31,4 @@ jobs:
           target: google_apis
           arch: x86
           script: mvn clean test -Pandroid
-  
+
