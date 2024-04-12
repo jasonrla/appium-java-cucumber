@@ -15,11 +15,15 @@ public class TestBase extends AbstractTestNGCucumberTests {
 
     public static void Android_setUp() throws MalformedURLException {
 
+        String platformVersion="";
         String apiLevel = System.getProperty("api.level");
+        if (apiLevel.equals(28)) {
+            platformVersion = "10";
+        }
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", apiLevel); //10 en CI
+        capabilities.setCapability("platformVersion", platformVersion); //10 en CI
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("app",
