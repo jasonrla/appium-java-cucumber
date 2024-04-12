@@ -18,7 +18,8 @@ jobs:
 
       - name: Setup appium
         run: |
-          npm install -g appium@v1.22
+          npm install -g appium@v2.0.1
+          npm install -g appium-uiautomator2-driver
           appium -v
       - name: Appium doctor
         run: |
