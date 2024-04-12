@@ -23,10 +23,12 @@ public class TestBase {
         capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/ToDo.apk");
+        capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
+        capabilities.setCapability("resetKeyboard", true);
         driver = new AndroidDriver(new URL("http://localhost:4723/"), capabilities); //sin wd/hub en local
     }
 
-    public void iOS_setUp() throws MalformedURLException {
+    public static void iOS_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("deviceName", "iPhone 15 Pro Max");

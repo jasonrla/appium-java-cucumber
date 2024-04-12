@@ -80,6 +80,9 @@
     <profiles>
         <profile>
             <id>iOS</id>
+            <properties>
+                <maven.profile>iOS</maven.profile>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -97,6 +100,9 @@
         </profile>
         <profile>
             <id>android</id>
+            <properties>
+                <maven.profile>android</maven.profile>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
