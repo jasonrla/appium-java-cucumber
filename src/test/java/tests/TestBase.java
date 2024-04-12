@@ -27,8 +27,13 @@ public class TestBase {
         capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/ToDo.apk");
-        capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
-        capabilities.setCapability("resetKeyboard", true);
+        if(Integer.valueOf(apiLevel)<30){
+            capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
+            capabilities.setCapability("resetKeyboard", true);
+        }
+        capabilities.setCapability("uiautomator2ServerInstallTimeout", 60000);
+        capabilities.setCapability("ignoreHiddenApiPolicyError", true);
+
         driver = new AndroidDriver(new URL("http://localhost:"+appiumPort+"/"), capabilities); //sin wd/hub en local
     }
 
