@@ -64,7 +64,7 @@ public class TestBase {
             case "31":
                 return "12.0";
             case "32":
-                return "12.0";
+                return "12L";
             case "33":
                 return "13.0";
             case "34":
