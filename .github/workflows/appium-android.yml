@@ -23,8 +23,8 @@ jobs:
           appium driver install uiautomator2
           npm install -g appium-doctor
           appium -v
-          chmod +x find_free_port.sh
-          port=$(bash -c './find_free_port.sh')
+          chmod +x $GITHUB_WORKSPACE/find_free_port.sh
+          port=$(bash -c '$GITHUB_WORKSPACE/find_free_port.sh')
           appium --port $port &>/dev/null &
 
       - name: Run appium android tests
