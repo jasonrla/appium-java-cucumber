@@ -12,9 +12,12 @@ jobs:
     strategy:
       matrix:
         config:
-          - { api-level: 24, port: 4723 }
-          - { api-level: 28, port: 4724 }
-          - { api-level: 29, port: 4725 }
+          - { api-level: 27, target: default, arch: x86, port: 4723 }
+          - { api-level: 28, target: default, arch: x86, port: 4724 }
+          - { api-level: 29, target: default, arch: x86, port: 4725 }
+          - { api-level: 34, target: google_apis, arch: x86_64, port: 4726 }
+          - { api-level: 33, target: google_apis, arch: x86_64, port: 4727 }
+          - { api-level: 32, target: google_apis, arch: x86_64, port: 4728 }
       fail-fast: false
     steps:
       - name: Checkout code
@@ -29,9 +32,11 @@ jobs:
           appium -p ${{ matrix.config.port }} &>/dev/null &
 
       - name: Run appium android tests
-        uses: reactivecircus/android-emulator-runner@v2
+        uses: reactivecircus/android-emulator-runner@v2.27.0
         with:
           api-level: ${{ matrix.config.api-level }}
+          target: ${{ matrix.config.target }}
+          arch: ${{ matrix.config.arch }}
           script: |
             echo "Appium port: ${{ matrix.config.port }}"
             mvn clean test -Pandroid -Dapi.level=${{ matrix.config.api-level }} -DappiumPort=${{ matrix.config.port }}
