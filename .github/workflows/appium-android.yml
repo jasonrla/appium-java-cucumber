@@ -25,10 +25,12 @@ jobs:
           appium -v
           chmod +x $GITHUB_WORKSPACE/find_free_port.sh
           port=$(bash -c '$GITHUB_WORKSPACE/find_free_port.sh')
-          appium --port $port &>/dev/null &
+          echo "Appium port: $port"
+          appium -p $port &>/dev/null &
 
       - name: Run appium android tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }} #29
+          echo "Appium port appium: $port"
           script: mvn clean test -Pandroid -Dappium.port=$port -Dapi.level=${{ matrix.api-level }}
