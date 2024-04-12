@@ -16,8 +16,8 @@ jobs:
           #- { api-level: 28, target: default, arch: x86, port: 4724 }
           #- { api-level: 29, target: default, arch: x86, port: 4725 }
           - { api-level: 34, target: google_apis, arch: x86_64, port: 4726 }
-          - { api-level: 33, target: google_apis, arch: x86_64, port: 4727 }
-          - { api-level: 32, target: google_apis, arch: x86_64, port: 4728 }
+          #- { api-level: 33, target: google_apis, arch: x86_64, port: 4727 }
+          #- { api-level: 32, target: google_apis, arch: x86_64, port: 4728 }
       fail-fast: false
     steps:
       - name: Checkout code
@@ -28,8 +28,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-        script:
-          java -version
 
       - name: Setup appium
         run: |
