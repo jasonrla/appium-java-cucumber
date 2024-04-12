@@ -2,19 +2,19 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="24287" started-at="2024-04-11T23:32:20Z" finished-at="2024-04-11T23:32:44Z">
+  <suite name="Suite" duration-ms="26396" started-at="2024-04-12T01:14:49Z" finished-at="2024-04-12T01:15:16Z">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:tests.ToDo_Android@55d56113]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Android" duration-ms="24287" started-at="2024-04-11T23:32:20Z" finished-at="2024-04-11T23:32:44Z">
+    <test name="Android" duration-ms="26396" started-at="2024-04-12T01:14:49Z" finished-at="2024-04-12T01:15:16Z">
       <class name="tests.ToDo_Android">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:tests.ToDo_Android@55d56113]" name="setUpClass" is-config="true" duration-ms="511" started-at="2024-04-11T23:32:20Z" finished-at="2024-04-11T23:32:21Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:tests.ToDo_Android@55d56113]" name="setUpClass" is-config="true" duration-ms="606" started-at="2024-04-12T01:14:49Z" finished-at="2024-04-12T01:14:50Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="test_add_task(java.lang.String, java.lang.String)[pri:0, instance:tests.ToDo_Android@55d56113]" name="test_add_task" duration-ms="11159" started-at="2024-04-11T23:32:21Z" data-provider="tasks data" finished-at="2024-04-11T23:32:32Z">
+        <test-method status="PASS" signature="test_add_task(java.lang.String, java.lang.String)[pri:0, instance:tests.ToDo_Android@55d56113]" name="test_add_task" duration-ms="12256" started-at="2024-04-12T01:14:50Z" data-provider="tasks data" finished-at="2024-04-12T01:15:02Z">
           <params>
             <param index="0">
               <value>
@@ -30,7 +30,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test_add_task -->
-        <test-method status="PASS" signature="test_add_task(java.lang.String, java.lang.String)[pri:0, instance:tests.ToDo_Android@55d56113]" name="test_add_task" duration-ms="10100" started-at="2024-04-11T23:32:32Z" data-provider="tasks data" finished-at="2024-04-11T23:32:42Z">
+        <test-method status="PASS" signature="test_add_task(java.lang.String, java.lang.String)[pri:0, instance:tests.ToDo_Android@55d56113]" name="test_add_task" duration-ms="10332" started-at="2024-04-12T01:15:02Z" data-provider="tasks data" finished-at="2024-04-12T01:15:13Z">
           <params>
             <param index="0">
               <value>
@@ -46,7 +46,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test_add_task -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:tests.ToDo_Android@55d56113]" name="tearDownClass" is-config="true" duration-ms="2463" started-at="2024-04-11T23:32:42Z" finished-at="2024-04-11T23:32:44Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:tests.ToDo_Android@55d56113]" name="tearDownClass" is-config="true" duration-ms="3132" started-at="2024-04-12T01:15:13Z" finished-at="2024-04-12T01:15:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

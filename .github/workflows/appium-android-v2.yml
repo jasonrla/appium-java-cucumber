@@ -1,0 +1,27 @@
+name: Appium Android
+
+on:
+  push:
+    branches: [ testingV2 ]
+  pull_request:
+    branches: [ testingV2 ]
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup appium
+        run: |
+          npm install -g appium@v1.22
+          appium -v
+          appium &>/dev/null &
+
+      - name: Run appium android tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29 #29
+          script: mvn clean test -Pandroid
+  
