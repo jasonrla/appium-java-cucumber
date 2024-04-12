@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         api-level: [ 29 ]
-        arch: [ x86_64 ]
+        arch: [ x86 ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
