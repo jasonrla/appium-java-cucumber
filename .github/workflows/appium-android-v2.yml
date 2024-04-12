@@ -8,27 +8,40 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: macos-latest
+    runs-on: self-hosted # Cambiado a self-hosted
     strategy:
       matrix:
         api-level: [ 34 ]
-        target: [ default ]
+        target: [ aosp_atd ] # Cambiado a 'aosp_atd' para ARM64
+        arch: [ arm64-v8a ] # Agregada la arquitectura ARM64
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup appium
+      - name: Setup Android SDK
+        run: |
+          # Instalar Android SDK y aceptar licencias
+          yes | sdkmanager --licenses
+          sdkmanager "platform-tools" "emulator" "system-images;android-${{ matrix.api-level }};${{ matrix.target }};${{ matrix.arch }}"
+
+      - name: Create AVD
+        run: |
+          # Crear un AVD ARM64
+          echo "no" | avdmanager create avd --force --name android-emulator --package "system-images;android-${{ matrix.api-level }};${{ matrix.target }};${{ matrix.arch }}"
+
+      - name: Launch Emulator
+        run: |
+          # Iniciar el emulador ARM64
+          nohup emulator -avd android-emulator -no-audio -no-window &
+
+      - name: Setup Appium
         run: |
           npm install -g appium@2.0.1
           appium -v
           appium driver install uiautomator2
           appium &>/dev/null &
 
-      - name: Run appium android tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }}
-          arch: x86_64
-          script: mvn clean test -Pandroid
-  
+      - name: Run Appium Tests
+        run: |
+          # Ejecutar tus pruebas de Appium en el emulador ARM64
+          mvn clean test -Pandroid
