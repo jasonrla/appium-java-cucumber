@@ -38,7 +38,7 @@ public class CreateNewTaskSteps extends TestBase {
 
     @Then("Task added successfully")
     public void taskAddedSuccessfully() {
-        //driver.hideKeyboard();
+        driver.hideKeyboard();
         tearDown();
     }
 }

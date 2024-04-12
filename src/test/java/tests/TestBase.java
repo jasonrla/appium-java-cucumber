@@ -4,13 +4,17 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import runner.AndroidBaseDriver;
+import runner.BaseDriver;
+import runner.IOSBaseDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class TestBase {
 
-    public static AppiumDriver driver;
+    //public static AppiumDriver driver;
+    public static BaseDriver driver;
 
     public static void Android_setUp() throws MalformedURLException {
 
@@ -27,14 +31,16 @@ public class TestBase {
         capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/ToDo.apk");
-        if(Integer.valueOf(apiLevel)<30){
-            capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
-            capabilities.setCapability("resetKeyboard", true);
-        }
-        capabilities.setCapability("uiautomator2ServerInstallTimeout", 60000);
-        capabilities.setCapability("ignoreHiddenApiPolicyError", true);
+//        if(Integer.valueOf(apiLevel)<30){
+//            capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
+//            capabilities.setCapability("resetKeyboard", true);
+//        }
+//        capabilities.setCapability("uiautomator2ServerInstallTimeout", 60000);
+//        capabilities.setCapability("ignoreHiddenApiPolicyError", true);
 
-        driver = new AndroidDriver(new URL("http://localhost:"+appiumPort+"/"), capabilities); //sin wd/hub en local
+        //driver = new AndroidDriver(new URL("http://localhost:"+appiumPort+"/"), capabilities); //sin wd/hub en local
+        AndroidDriver androidDriver = new AndroidDriver(new URL("http://localhost:" + appiumPort + "/"), capabilities);
+        driver = new AndroidBaseDriver(androidDriver);
     }
 
     public static void iOS_setUp() throws MalformedURLException {
@@ -45,7 +51,9 @@ public class TestBase {
         capabilities.setCapability("isHeadless",true);
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.zip");
-        driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
+        //driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
+        IOSDriver iosDriver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
+        driver = new IOSBaseDriver(iosDriver);
     }
 
     public static String getPlatformVersionFromApiLevel(String apiLevel) {
@@ -86,8 +94,14 @@ public class TestBase {
     }
 
     public static void tearDown() {
-        if (null != driver) {
-            driver.quit();
+//        if (null != driver) {
+//            driver.quit();
+//        }
+        if (driver != null) {
+            AppiumDriver appiumDriver = driver.getDriver();
+            if (appiumDriver != null) {
+                appiumDriver.quit();
+            }
         }
     }
 }
