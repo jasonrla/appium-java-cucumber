@@ -16,6 +16,10 @@ public class TestBase {
 
         String apiLevel = System.getProperty("api.level");
         System.out.printf("API Level: %s\n", apiLevel);
+
+        String appiumPort = System.getProperty("appium.port");
+        System.out.printf("Appium port: %s\n", appiumPort);
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("platformVersion", getPlatformVersionFromApiLevel(apiLevel)); //28:9 , 29:10 en CI
@@ -25,7 +29,7 @@ public class TestBase {
                 System.getProperty("user.dir") + "/apps/ToDo.apk");
         capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
         capabilities.setCapability("resetKeyboard", true);
-        driver = new AndroidDriver(new URL("http://localhost:4723/"), capabilities); //sin wd/hub en local
+        driver = new AndroidDriver(new URL("http://localhost:"+appiumPort+"/"), capabilities); //sin wd/hub en local
     }
 
     public static void iOS_setUp() throws MalformedURLException {
