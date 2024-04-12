@@ -20,7 +20,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
         //capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator");
 
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "10"); //10 en CI
+        capabilities.setCapability("platformVersion", "14"); //10 en CI
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("app",
