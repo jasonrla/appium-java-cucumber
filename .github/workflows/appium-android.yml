@@ -12,7 +12,6 @@ jobs:
     strategy:
       matrix:
         api-level: [ 29 ]
-        arch: [ x86 ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -30,6 +29,5 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }} #29
           target: google_apis
-          arch: ${{ matrix.arch }}
           script: mvn clean test -Pandroid
 
