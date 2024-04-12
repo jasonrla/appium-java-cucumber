@@ -29,7 +29,7 @@ public class CreateNewTaskWithData extends TestBase {
 
     @Then("Task Added Successfully")
     public void taskAddedSuccessfully() {
-        driver.hideKeyboard();
+        //driver.hideKeyboard();
         tearDown();
     }
 }

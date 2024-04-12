@@ -1,9 +1,10 @@
 package PageObjects;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import org.openqa.selenium.WebElement;
 
 public class TasksListPage extends PageBase {
     public TasksListPage(AppiumDriver appiumDriver) {
@@ -12,7 +13,7 @@ public class TasksListPage extends PageBase {
 
     @AndroidFindBy(id = "fab")
     @iOSXCUITFindBy(accessibility = "plus.circle")
-    MobileElement addTaskBtn;
+    WebElement addTaskBtn;
 
     public void clickAddTaskBtn() {
         click(addTaskBtn);

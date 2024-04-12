@@ -12,7 +12,6 @@ jobs:
     strategy:
       matrix:
         api-level: [ 29 ]
-        arch: [ x86 ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,7 +19,7 @@ jobs:
       - name: Setup appium
         run: |
           npm install -g appium@v2.4.1
-          appium driver install uiautomator2          
+          appium driver install uiautomator2
           npm install -g appium-doctor
           appium -v
           appium &>/dev/null &
@@ -29,7 +28,4 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }} #29
-          target: google_apis
-          arch: ${{ matrix.arch }}
           script: mvn clean test -Pandroid
-

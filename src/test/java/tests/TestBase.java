@@ -36,7 +36,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
         capabilities.setCapability("isHeadless",true);
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.zip");
-        driver = new IOSDriver<>(new URL("http://localhost:4723/"), capabilities);
+        driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
     public static void tearDown() {
