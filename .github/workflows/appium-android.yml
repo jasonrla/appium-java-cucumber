@@ -19,7 +19,7 @@ jobs:
       - name: Setup appium
         run: |
           npm install -g appium@v2.4.1
-          appium driver install uiautomator2          
+          appium driver install uiautomator2
           npm install -g appium-doctor
           appium -v
           appium &>/dev/null &
@@ -28,6 +28,4 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }} #29
-          target: google_apis
           script: mvn clean test -Pandroid
-
