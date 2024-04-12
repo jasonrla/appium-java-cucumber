@@ -17,7 +17,7 @@ public class TestBase {
         String apiLevel = System.getProperty("api.level");
         System.out.printf("API Level: %s\n", apiLevel);
 
-        String appiumPort = System.getProperty("appium.port");
+        String appiumPort = System.getProperty("appiumPort");
         System.out.printf("Appium port: %s\n", appiumPort);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

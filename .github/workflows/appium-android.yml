@@ -11,7 +11,10 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [ 24, 28, 29]
+        config:
+          - { api-level: 24, port: 4723 }
+          - { api-level: 28, port: 4724 }
+          - { api-level: 29, port: 4725 }
       fail-fast: false
     steps:
       - name: Checkout code
@@ -23,14 +26,12 @@ jobs:
           appium driver install uiautomator2
           npm install -g appium-doctor
           appium -v
-          chmod +x $GITHUB_WORKSPACE/find_free_port.sh
-          port=$(bash -c '$GITHUB_WORKSPACE/find_free_port.sh')
-          echo "Appium port: $port"
-          appium -p $port &>/dev/null &
+          appium -p ${{ matrix.config.port }} &>/dev/null &
 
       - name: Run appium android tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.api-level }} #29
-          echo "Appium port appium: $port"
-          script: mvn clean test -Pandroid -Dappium.port=$port -Dapi.level=${{ matrix.api-level }}
+          api-level: ${{ matrix.config.api-level }}
+          script: |
+            echo "Appium port: ${{ matrix.config.port }}"
+            mvn clean test -Pandroid -Dapi.level=${{ matrix.config.api-level }} -DappiumPort=${{ matrix.config.port }}
