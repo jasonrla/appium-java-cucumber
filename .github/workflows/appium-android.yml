@@ -23,10 +23,11 @@ jobs:
           appium driver install uiautomator2
           npm install -g appium-doctor
           appium -v
-          appium --port $(( 4723 + ${{ github.run_id }} + ${{ github.job_id }} )) &>/dev/null &
+          port=$(bash -c './find_free_port.sh')
+          appium --port $port &>/dev/null &
 
       - name: Run appium android tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }} #29
-          script: mvn clean test -Pandroid -Dappium.port=$(( 4723 + ${{ github.run_id }} + ${{ github.job_id }} )) -Dapi.level=${{ matrix.api-level }}
+          script: mvn clean test -Pandroid -Dappium.port=$port -Dapi.level=${{ matrix.api-level }}
