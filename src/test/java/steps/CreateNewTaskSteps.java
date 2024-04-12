@@ -9,7 +9,7 @@ import tests.TestBase;
 
 import java.net.MalformedURLException;
 
-public class CreateNewTask extends TestBase {
+public class CreateNewTaskSteps extends TestBase {
     CreateTaskPage createTaskPage;
     TasksListPage tasksListPage;
 

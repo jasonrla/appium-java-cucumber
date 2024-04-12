@@ -3,13 +3,12 @@ package tests;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class TestBase extends AbstractTestNGCucumberTests {
+public class TestBase {
 
     public static AppiumDriver driver;
 
@@ -20,7 +19,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
         //capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator");
 
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "14"); //10 en CI
+        capabilities.setCapability("platformVersion", "10"); //10 en CI
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("app",
