@@ -13,8 +13,8 @@ import java.net.URL;
 
 public class TestBase {
 
-    //public static AppiumDriver driver;
-    public static BaseDriver driver;
+    public static AppiumDriver driver;
+    //public static BaseDriver driver;
 
     public static void Android_setUp() throws MalformedURLException {
 
@@ -38,9 +38,9 @@ public class TestBase {
 //        capabilities.setCapability("uiautomator2ServerInstallTimeout", 60000);
 //        capabilities.setCapability("ignoreHiddenApiPolicyError", true);
 
-        //driver = new AndroidDriver(new URL("http://localhost:"+appiumPort+"/"), capabilities); //sin wd/hub en local
-        AndroidDriver androidDriver = new AndroidDriver(new URL("http://localhost:" + appiumPort + "/"), capabilities);
-        driver = new AndroidBaseDriver(androidDriver);
+        driver = new AndroidDriver(new URL("http://localhost:"+appiumPort+"/"), capabilities); //sin wd/hub en local
+        //AndroidDriver androidDriver = new AndroidDriver(new URL("http://localhost:" + appiumPort + "/"), capabilities);
+        //driver = new AndroidBaseDriver(androidDriver);
     }
 
     public static void iOS_setUp() throws MalformedURLException {
@@ -51,9 +51,9 @@ public class TestBase {
         capabilities.setCapability("isHeadless",true);
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.zip");
-        //driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
-        IOSDriver iosDriver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
-        driver = new IOSBaseDriver(iosDriver);
+        driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
+        //IOSDriver iosDriver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
+        //driver = new IOSBaseDriver(iosDriver);
     }
 
     public static String getPlatformVersionFromApiLevel(String apiLevel) {
@@ -94,14 +94,14 @@ public class TestBase {
     }
 
     public static void tearDown() {
-//        if (null != driver) {
-//            driver.quit();
-//        }
-        if (driver != null) {
-            AppiumDriver appiumDriver = driver.getDriver();
-            if (appiumDriver != null) {
-                appiumDriver.quit();
-            }
+        if (null != driver) {
+            driver.quit();
         }
+//        if (driver != null) {
+//            AppiumDriver appiumDriver = driver.getDriver();
+//            if (appiumDriver != null) {
+//                appiumDriver.quit();
+//            }
+//        }
     }
 }
