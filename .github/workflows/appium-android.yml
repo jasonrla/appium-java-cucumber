@@ -20,6 +20,12 @@ jobs:
         run: |
           npm install -g appium@v1.22
           appium -v
+      - name: Appium doctor
+        run: |
+          appium-doctor
+      - name: Appium driver list
+        run: |
+          appium driver list
           appium &>/dev/null &
 
       - name: Run appium android tests
