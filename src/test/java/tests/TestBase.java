@@ -44,7 +44,7 @@ public class TestBase {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
         //capabilities.setCapability("platformVersion", "16.2");
-        capabilities.setCapability("deviceName", "iPhone 15");
+        capabilities.setCapability("deviceName", "iPhone 14");
         capabilities.setCapability("automationName","XCUITest");
         capabilities.setCapability("isHeadless",true); //CI
         capabilities.setCapability("app",
