@@ -21,6 +21,14 @@ jobs:
       - name: Check Xcode version
         run: xcodebuild -version
 
+      - name: List iOS Devices & Platforms
+        run: |
+          xcrun simctl list
+          
+      - name: List iOS Devices & Platforms Booted
+        run: |
+          xcrun simctl list | grep Booted
+
       - name: Setup Java
         uses: actions/setup-java@v4.2.1
         with:
