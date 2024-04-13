@@ -29,14 +29,14 @@ public class TestBase {
         capabilities.setCapability("platformVersion", getPlatformVersionFromApiLevel(apiLevel)); //28:9 , 29:10 en CI
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "uiautomator2");
-        capabilities.setCapability("app",
-                System.getProperty("user.dir") + "/apps/ToDo.apk");
-        if(Integer.valueOf(apiLevel)<30){
-            capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
-            capabilities.setCapability("resetKeyboard", true);
-        }
+        //if(Integer.valueOf(apiLevel)<30){
+        capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
+        capabilities.setCapability("resetKeyboard", true);
+        //}
         capabilities.setCapability("uiautomator2ServerInstallTimeout", 60000); // Aumentar a 60 segundos
         capabilities.setCapability("adbExecTimeout", 60000); // Aumentar a 60 segundos
+        capabilities.setCapability("app",
+                System.getProperty("user.dir") + "/apps/ToDo.apk");
 
         driver = new AndroidDriver(new URL("http://localhost:"+appiumPort+"/"), capabilities); //sin wd/hub en local
         //AndroidDriver androidDriver = new AndroidDriver(new URL("http://localhost:" + appiumPort + "/"), capabilities);

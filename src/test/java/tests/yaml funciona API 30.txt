@@ -15,9 +15,10 @@ jobs:
           #- { api-level: 27, target: default, arch: x86, port: 4723 }
           #- { api-level: 28, target: default, arch: x86, port: 4724 }
           #- { api-level: 29, target: default, arch: x86, port: 4725 }
-          #- { api-level: 30, target: google_atd, arch: x86_64, port: 4726, channel: canary }
-          - { api-level: 32, target: google_atd, arch: x86_64, port: 4727, channel: canary }
-
+          - { api-level: 30, target: google_atd, arch: x86_64, port: 4726, channel: canary }
+          #- { api-level: 34, target: google_apis, arch: x86_64, port: 4727 }
+          #- { api-level: 33, target: google_apis, arch: x86_64, port: 4728 }
+          #- { api-level: 32, target: google_apis, arch: x86_64, port: 4729 }
       fail-fast: false
     steps:
       - name: Checkout code
@@ -37,7 +38,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+            node-version: '20'
 
       - name: Setup appium
         run: |
