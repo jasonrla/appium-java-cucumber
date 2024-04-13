@@ -29,10 +29,10 @@ public class TestBase {
         capabilities.setCapability("platformVersion", getPlatformVersionFromApiLevel(apiLevel)); //28:9 , 29:10 en CI
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "uiautomator2");
-        //if(Integer.valueOf(apiLevel)<30){
-        capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
-        capabilities.setCapability("resetKeyboard", true);
-        //}
+        if(Integer.valueOf(apiLevel)<30){
+            capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
+            capabilities.setCapability("resetKeyboard", true);
+        }
         capabilities.setCapability("uiautomator2ServerInstallTimeout", 60000); // Aumentar a 60 segundos
         capabilities.setCapability("adbExecTimeout", 60000); // Aumentar a 60 segundos
         capabilities.setCapability("app",
