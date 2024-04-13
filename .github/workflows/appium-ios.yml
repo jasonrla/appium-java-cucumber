@@ -14,9 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4.1.1
 
-      - name: Grant simulator access
-        run: sudo tccutil reset All com.apple.CoreSimulator
-
       - name: Check Xcode version
         run: xcodebuild -version
 
