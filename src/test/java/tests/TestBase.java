@@ -43,8 +43,8 @@ public class TestBase {
     public static void iOS_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", "17.4");
-        capabilities.setCapability("deviceName", "iPhone 15 Pro Max");
+        //capabilities.setCapability("platformVersion", "17.4");
+        capabilities.setCapability("deviceName", "iPhone X");
         capabilities.setCapability("automationName","XCUITest");
         capabilities.setCapability("isHeadless",true); //CI
         capabilities.setCapability("app",
