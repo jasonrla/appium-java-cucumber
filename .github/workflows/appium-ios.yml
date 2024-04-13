@@ -47,7 +47,7 @@ jobs:
 
       - name: Start iOS Simulator
         run: |
-          xcrun simctl boot "iPhone 14" &
+          xcrun simctl boot "iPhone 14"
           xcrun simctl list | grep Booted
 
       - name: Get Booted Simulator UDID
