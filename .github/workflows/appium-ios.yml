@@ -20,9 +20,14 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - run: |
+      - name: Setup appium
+        run: |
           npm install -g appium@v2.0.1
           appium driver install xcuitest
           appium -v
           appium &>/dev/null &
-          mvn clean test -PiOS
+
+      - name: Run appium ios tests
+        with:
+          script: |
+            mvn clean test -PiOS
