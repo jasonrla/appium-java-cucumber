@@ -29,6 +29,11 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+            node-version: '20'
+
       - name: Setup appium
         run: |
           npm install -g appium@v2.0.1
