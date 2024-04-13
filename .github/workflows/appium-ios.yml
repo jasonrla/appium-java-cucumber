@@ -9,15 +9,6 @@ on:
 jobs:
   build-and-test:
     runs-on: macos-latest
-    strategy:
-      matrix:
-        config:
-          #- { device-name: iPhone 14 Pro Max, appium-port: 4723, wda-port: 8101 }
-          #- { device-name: iPhone SE (3rd generation), appium-port: 4724, wda-port: 8102 }
-          #- { device-name: iPhone 13 Pro, appium-port: 4725, wda-port: 8103 }
-          #- { device-name: iPhone 12 mini, appium-port: 4726, wda-port: 8104 }
-          - { device-name: iPhone 14, appium-port: 4727, wda-port: 8105 }
-      fail-fast: false
 
     steps:
       - name: Checkout code
@@ -56,7 +47,7 @@ jobs:
 
       - name: Start iOS Simulator
         run: |
-          xcrun simctl boot "${{ matrix.config.device-name }}" &
+          xcrun simctl boot "iPhone 14" &
           xcrun simctl list | grep Booted
 
       - name: Get Booted Simulator UDID
