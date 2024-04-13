@@ -71,10 +71,6 @@ jobs:
           appium -v
           appium -p ${{ matrix.config.appium-port }} &>/dev/null &
 
-      - name: Wait for Appium server
-        run: |
-          while ! nc -z localhost 4723; do sleep 1; done
-
       - name: Run Appium iOS tests
         run: |
           mvn clean test -PiOS -Ddevice.name="${{ matrix.config.device-name }}" -Dappium.port=${{ matrix.config.appium-port }} -Dwda.port=${{ matrix.config.wda-port }} -Ddevice.uuid=${{ env.DEVICE_UUID }}
