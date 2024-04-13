@@ -28,6 +28,5 @@ jobs:
           appium &>/dev/null &
 
       - name: Run appium ios tests
-        with:
-          script: |
+        run: |
             mvn clean test -PiOS
