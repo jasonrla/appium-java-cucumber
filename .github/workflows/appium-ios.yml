@@ -24,13 +24,6 @@ jobs:
       - name: Start iOS Simulator
         run: |
           xcrun simctl boot "iPhone 14"
-          xcrun simctl list devices
-
-      - name: Get Booted Simulator UDID
-        run: |
-          DEVICE_UDID=$(xcrun simctl list devices | grep -i booted | grep -i "${{ matrix.config.device-name }}" | awk -F '[()]+' '{print $2}')
-          echo "DEVICE_UDID=$DEVICE_UDID"
-
       - name: Setup Java
         uses: actions/setup-java@v4.2.1
         with:
@@ -43,7 +36,6 @@ jobs:
           appium driver install xcuitest@7.11.3
           appium -v
           appium &>/dev/null &
-
       - name: Run appium ios tests
         run: |
-            mvn clean test -PiOS
+          mvn clean test -PiOS
