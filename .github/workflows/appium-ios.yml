@@ -14,9 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4.1.1
 
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
+      - name: List iOS Devices & Platforms
+        run: |
+          xcrun simctl list
+      #- uses: maxim-lobanov/setup-xcode@v1
+      #  with:
+      #    xcode-version: latest-stable
 
       - name: Check Xcode version
         run: xcodebuild -version
@@ -24,6 +27,7 @@ jobs:
       - name: Start iOS Simulator
         run: |
           xcrun simctl boot "iPhone 14"
+          xcrun simctl list devices
 
       - name: Setup Java
         uses: actions/setup-java@v4.2.1
