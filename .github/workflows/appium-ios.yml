@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.1
@@ -19,7 +19,9 @@ jobs:
           xcode-version: latest-stable
 
       - name: Check Xcode version
-        run: xcodebuild -version
+        run: |
+          xcodebuild -version
+          xcrun simctl list devices
 
       - name: Start iOS Simulator
         run: |

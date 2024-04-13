@@ -47,6 +47,7 @@ public class TestBase {
         capabilities.setCapability("deviceName", "iPhone 14");
         capabilities.setCapability("automationName","XCUITest");
         capabilities.setCapability("isHeadless",true); //CI
+        capabilities.setCapability("wdaLaunchTimeout", 120000);
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.zip");
         driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
