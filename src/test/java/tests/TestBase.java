@@ -4,9 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import runner.AndroidBaseDriver;
-import runner.BaseDriver;
-import runner.IOSBaseDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -46,14 +43,14 @@ public class TestBase {
     public static void iOS_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
+        capabilities.setCapability("platformVersion", "17.4");
         capabilities.setCapability("deviceName", "iPhone 15 Pro Max");
         capabilities.setCapability("automationName","XCUITest");
-        capabilities.setCapability("isHeadless",true);
+        //capabilities.setCapability("isHeadless",true);
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.zip");
         driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
-        //IOSDriver iosDriver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
-        //driver = new IOSBaseDriver(iosDriver);
+
     }
 
     public static String getPlatformVersionFromApiLevel(String apiLevel) {
