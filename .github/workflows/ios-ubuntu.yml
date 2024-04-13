@@ -24,6 +24,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install Carthage
+        run: |
+          brew update
+          brew install carthage
+
       - name: Install Appium
         run: |
           npm install -g appium@v2.0.1
@@ -40,7 +45,7 @@ jobs:
       - name: Install WebDriverAgent dependencies
         run: |
           cd WebDriverAgent
-          ./Scripts/bootstrap.sh -d
+          ./bootstrap.sh -d
 
       - name: Build WebDriverAgent
         run: |
