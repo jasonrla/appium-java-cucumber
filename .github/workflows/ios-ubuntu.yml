@@ -1,0 +1,58 @@
+name: Appium iOS Tests
+
+on:
+  push:
+    branches: [ ios_ubuntu ]
+  pull_request:
+    branches: [ ios_ubuntu ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.1
+
+      - name: Setup Java
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: '20'
+
+      - name: Install Appium
+        run: |
+          npm install -g appium@v2.0.1
+          appium driver install xcuitest@7.11.3
+
+      - name: Install WebDriverAgent dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libusbmuxd-tools libimobiledevice6 libplist3 usbmuxd
+
+      - name: Clone WebDriverAgent
+        run: git clone https://github.com/appium/WebDriverAgent.git
+
+      - name: Install WebDriverAgent dependencies
+        run: |
+          cd WebDriverAgent
+          ./Scripts/bootstrap.sh -d
+
+      - name: Build WebDriverAgent
+        run: |
+          cd WebDriverAgent
+          mkdir -p Resources/WebDriverAgent.bundle
+          sh -c 'echo "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>" > Resources/WebDriverAgent.bundle/Info.plist'
+          sudo xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination "id=$(idevice_id -l)" test
+
+      - name: Start Appium
+        run: |
+          appium -v
+          appium &>/dev/null &
+
+      - name: Run Appium iOS tests
+        run: mvn clean test -PiOS -Ddevice.name="iPhone 14 Pro Max"
