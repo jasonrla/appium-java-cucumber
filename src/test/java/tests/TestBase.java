@@ -50,6 +50,8 @@ public class TestBase {
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.zip");
         driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
+
+        //pruebas paralelas diferente puerto appium, wdaLocalPort, udid
     }
 
     public static String getPlatformVersionFromApiLevel(String apiLevel) {
