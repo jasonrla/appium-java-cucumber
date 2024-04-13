@@ -43,10 +43,10 @@ public class TestBase {
     public static void iOS_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", "17.4");
+        //capabilities.setCapability("platformVersion", "17.4"); CI
         capabilities.setCapability("deviceName", "iPhone 15 Pro Max");
         capabilities.setCapability("automationName","XCUITest");
-        //capabilities.setCapability("isHeadless",true);
+        capabilities.setCapability("isHeadless",true); //CI
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.zip");
         driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
