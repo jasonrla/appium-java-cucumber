@@ -21,6 +21,10 @@ jobs:
       - name: Check Xcode version
         run: xcodebuild -version
 
+      - name: Start iOS Simulator
+        run: |
+          xcrun simctl boot "iPhone 14" "com.apple.CoreSimulator.SimRuntime.iOS-16-2"
+
       - name: Setup Java
         uses: actions/setup-java@v4.2.1
         with:
