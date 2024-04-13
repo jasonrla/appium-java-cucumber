@@ -31,10 +31,10 @@ public class TestBase {
         capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/ToDo.apk");
-        if(Integer.valueOf(apiLevel)<30){
+        //if(Integer.valueOf(apiLevel)<30){
             capabilities.setCapability("unicodeKeyboard", true); // Deshabilita el teclado Unicode
             capabilities.setCapability("resetKeyboard", true);
-        }
+        //}
 //        capabilities.setCapability("uiautomator2ServerInstallTimeout", 60000);
 //        capabilities.setCapability("ignoreHiddenApiPolicyError", true);
 
