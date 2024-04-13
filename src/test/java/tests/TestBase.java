@@ -40,19 +40,32 @@ public class TestBase {
         //driver = new AndroidBaseDriver(androidDriver);
     }
 
+
     public static void iOS_setUp() throws MalformedURLException {
+
+        String deviceName = System.getProperty("device.name");
+        System.out.printf("Device name: %s\n", deviceName);
+
+        String appiumPort = System.getProperty("appium.port");
+        System.out.printf("Appium port: %s\n", appiumPort);
+
+        String wdaPort = System.getProperty("wda.port");
+        System.out.printf("WDA port: %s\n", wdaPort);
+
+        String deviceUUID = System.getProperty("device.uuid");
+        System.out.printf("Device UUID: %s\n", deviceUUID);
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
         //capabilities.setCapability("platformVersion", "16.2");
-        capabilities.setCapability("deviceName", "iPhone 14");
+        capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("automationName","XCUITest");
         capabilities.setCapability("isHeadless",true); //CI
         capabilities.setCapability("wdaLaunchTimeout", 120000);
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.zip");
-        driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
+        driver = new IOSDriver(new URL("http://localhost:"+appiumPort+"/"), capabilities);
 
-        //pruebas paralelas diferente puerto appium, wdaLocalPort, udid
     }
 
     public static String getPlatformVersionFromApiLevel(String apiLevel) {

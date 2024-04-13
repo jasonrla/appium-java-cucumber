@@ -7,9 +7,17 @@ on:
     branches: [ ios ]
 
 jobs:
-  build:
-
+  build-and-test:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        config:
+          - { device-name: iPhone 14 Pro Max, appium-port: 4723, wda-port: 8101 }
+          - { device-name: iPhone SE (3rd generation), appium-port: 4724, wda-port: 8102 }
+          - { device-name: iPhone 13 Pro, appium-port: 4725, wda-port: 8103 }
+          - { device-name: iPhone 12 mini, appium-port: 4726, wda-port: 8104 }
+      fail-fast: false
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.1
@@ -43,23 +51,27 @@ jobs:
       - name: Check Xcode version
         run: |
           xcodebuild -version
-          xcrun simctl list devices
 
       - name: Check Xcode version
         run: |
           xcodebuild -version
-          xcrun simctl list devices
 
       - name: Start iOS Simulator
         run: |
-          xcrun simctl boot "iPhone 14" &
+          xcrun simctl boot "${{ matrix.config.device-name }}" &
+          xcrun simctl list | grep Booted
+
+      - name: Get Booted Simulator UDID
+        run: |
+          DEVICE_UUID=$(xcrun simctl list devices | grep -i booted | grep -i "${{ matrix.config.device-name }}" | awk -F '[()]+' '{print $2}')
+          echo "DEVICE_UUID=$DEVICE_UUID" >> $GITHUB_ENV
 
       - name: Setup Appium
         run: |
           npm install -g appium@v2.0.1
           appium driver install xcuitest@7.11.3
           appium -v
-          appium &>/dev/null &
+          appium -p ${{ matrix.config.appium-port }} &>/dev/null &
 
       - name: Wait for Appium server
         run: |
@@ -67,4 +79,4 @@ jobs:
 
       - name: Run Appium iOS tests
         run: |
-          mvn clean test -PiOS
+          mvn clean test -PiOS -Ddevice.name="${{ matrix.config.device-name }}" -Dappium.port=${{ matrix.config.appium-port }} -Dwda.port=${{ matrix.config.wda-port }} -Ddevice.uuid=${{ env.DEVICE_UUID }}
