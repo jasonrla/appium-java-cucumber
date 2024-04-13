@@ -51,10 +51,7 @@ jobs:
       - name: Check Xcode version
         run: |
           xcodebuild -version
-
-      - name: Check Xcode version
-        run: |
-          xcodebuild -version
+          xcrun simctl list devices
 
       - name: Start iOS Simulator
         run: |
