@@ -40,6 +40,7 @@ jobs:
       - name: Install WebDriverAgent dependencies
         run: |
           cd WebDriverAgent
+          chmod +x bootstrap.sh
           ./bootstrap.sh -d
 
       - name: Build WebDriverAgent
