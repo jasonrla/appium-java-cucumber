@@ -8,16 +8,17 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         config:
-          - { api-level: 27, target: default, arch: x86, port: 4723 }
-          - { api-level: 28, target: default, arch: x86, port: 4724 }
-          - { api-level: 29, target: default, arch: x86, port: 4725 }
-          #- { api-level: 34, target: google_apis, arch: x86_64, port: 4726 }
-          #- { api-level: 33, target: google_apis, arch: x86_64, port: 4727 }
-          #- { api-level: 32, target: google_apis, arch: x86_64, port: 4728 }
+          #- { api-level: 27, target: default, arch: x86, port: 4723 }
+          #- { api-level: 28, target: default, arch: x86, port: 4724 }
+          #- { api-level: 29, target: default, arch: x86, port: 4725 }
+          - { api-level: 30, target: google_atd, arch: x86, port: 4726, channel: canaryS }
+          #- { api-level: 34, target: google_apis, arch: x86_64, port: 4727 }
+          #- { api-level: 33, target: google_apis, arch: x86_64, port: 4728 }
+          #- { api-level: 32, target: google_apis, arch: x86_64, port: 4729 }
       fail-fast: false
     steps:
       - name: Checkout code
